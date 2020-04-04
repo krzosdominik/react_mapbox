@@ -2,6 +2,7 @@ import React from 'react';
 import { Container } from 'reactstrap';
 
 import Accordion from './Accordion';
+import { MarkersProvider } from "../context/Markers.context";
 
 const Main = () => {
     return (
@@ -10,7 +11,9 @@ const Main = () => {
                 <h2 className='text-center'>
                     Test app and <strong className="text-info">have fun!</strong>
                 </h2>
-                <Accordion />
+                <MarkersProvider>
+                    <Accordion />
+                </MarkersProvider>
             </Container>
         </section>
     )
