@@ -13,3 +13,10 @@ export const accordionAttributes = {
     size: 'sm',
     style: accordionButtonStyle
 };
+
+export const arrowStyle = {
+    position: "absolute",
+    top: "50%",
+    right: "10px",
+    transform: "translate(0, -50%)"
+};
