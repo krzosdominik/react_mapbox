@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext } from 'react';
-import uniqid from "uniqid";
+import uniqid from 'uniqid';
 
 const MarkersContext = createContext();
 
@@ -10,19 +10,19 @@ export const useMarkers = () => {
 export const MarkersProvider = ({ children }) => {
     const [markers, setMarkers] = useState([]);
 
-    const handleMapClick = coordinates => {
+    const onMapClick = coordinates => {
         const [longitude, latitude] = coordinates;
         const marker = {
             id: uniqid(),
             longitude,
             latitude
         };
-        setMarkers(() => [...markers, marker]);
+        setMarkers([...markers, marker]);
     };
 
-    const handleMarkerDragEnd = (coordinates, id) => {
+    const onMarkerDragEnd = (coordinates, id) => {
         const [longitude, latitude] = coordinates;
-        setMarkers(() => markers.map(marker => {
+        setMarkers(markers.map(marker => {
             if (marker.id === id) {
                 return {
                     id,
@@ -34,15 +34,15 @@ export const MarkersProvider = ({ children }) => {
         }));
     };
 
-    const handleDeleteClick = id => setMarkers(() => markers.filter(marker => marker.id !== id));
+    const onMarkerRemove = id => setMarkers(markers.filter(marker => marker.id !== id));
 
     return (
         <MarkersContext.Provider
             value={{
                 markers,
-                handleMarkerDragEnd,
-                handleMapClick,
-                handleDeleteClick
+                onMapClick,
+                onMarkerDragEnd,
+                onMarkerRemove
             }}>
             {children}
         </MarkersContext.Provider>

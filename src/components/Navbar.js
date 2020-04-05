@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, Container, Nav, NavItem, NavLink } from "reactstrap";
+import { Navbar, Container, Nav, NavItem, NavLink } from 'reactstrap';
 
 const Header = () => {
-    const [navbarColor, setNavbarColor] = useState("navbar-transparent");
+    const [navbarColor, setNavbarColor] = useState('navbar-transparent');
 
     useEffect(() => {
         const updateNavbarColor = () => {
             const { scrollTop } = document.documentElement;
             if (scrollTop > 399) {
-                setNavbarColor("");
+                setNavbarColor('');
             } else if (scrollTop < 400) {
-                setNavbarColor("navbar-transparent");
+                setNavbarColor('navbar-transparent');
             }
         };
 
-        window.addEventListener("scroll", updateNavbarColor);
+        window.addEventListener('scroll', updateNavbarColor);
         return function cleanup() {
-            window.removeEventListener("scroll", updateNavbarColor);
+            window.removeEventListener('scroll', updateNavbarColor);
         };
     });
     return (
@@ -35,8 +35,8 @@ const Header = () => {
                             onClick={e => {
                                 e.preventDefault();
                                 document
-                                    .getElementById("main")
-                                    .scrollIntoView({ behavior: "smooth" });
+                                    .getElementById('main')
+                                    .scrollIntoView({ behavior: 'smooth' });
                             }}
                         >
                             <i className="now-ui-icons location_map-big"></i>

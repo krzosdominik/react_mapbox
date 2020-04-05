@@ -17,8 +17,8 @@ export const accordionAttributes = {
 };
 
 export const arrowStyle = {
-    position: "absolute",
-    top: "50%",
-    right: "10px",
-    transform: "translate(0, -50%)"
+    position: 'absolute',
+    top: '50%',
+    right: '10px',
+    transform: 'translate(0, -50%)'
 };

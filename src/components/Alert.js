@@ -1,29 +1,27 @@
 import React from 'react';
-import { Alert } from 'reactstrap';
+import { Alert as ReactstrapAlert } from 'reactstrap';
 
-const InfoMessage = ({ onClose, visible }) => {
-    const onAlertClose = () => onClose();
-
+const Alert = ({ color = 'primary', message, onClose, visible }) => {
     return (
-        <Alert color="warning" isOpen={visible}>
+        <ReactstrapAlert color={color} isOpen={visible}>
             <div className="container">
                 <div className="alert-icon">
                     <i className="now-ui-icons travel_info"></i>
                 </div>
-                Click on the map to add marker!
+                {message}
                 <button
                     type="button"
                     className="close"
                     aria-label="Close"
-                    onClick={onAlertClose}
+                    onClick={onClose}
                 >
                     <span aria-hidden="true">
                         <i className="now-ui-icons ui-1_simple-remove"></i>
                     </span>
                 </button>
             </div>
-        </Alert>
+        </ReactstrapAlert>
     )
 }
 
-export default InfoMessage;
+export default Alert;

@@ -12,7 +12,7 @@ const App = () => {
       <BrowserRouter>
         <Navbar />
         <Route exact path="/">
-          <div className='wrapper'>
+          <div className="wrapper">
             <Jumbotron />
             <div className="main">
               <Main />

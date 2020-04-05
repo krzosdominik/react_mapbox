@@ -1,29 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useMarkers } from '../context/Markers.context';
 import InfoTable from './InfoTable';
 import Pagination from './Pagination';
-import InfoMessage from './InfoMessage';
+import Alert from './Alert';
 
 const MarkersInfo = () => {
     const { markers } = useMarkers();
-    const [isMessageVisible, setMessageVisible] = useState(true);
+    const [isAlertVisible, setAlertVisible] = useState(true);
     const [currentPage, setCurrentPage] = useState(0);
+
+    useEffect(() => {
+        setAlertVisible(!markers.length)
+    }, [markers])
 
     const pageSize = 10;
     const pagesCount = Math.ceil(markers.length / pageSize);
 
-    const handleAlertClose = () => setMessageVisible(false);
+    const handleAlertClose = () => setAlertVisible(false);
     const handlePaginationClick = index => setCurrentPage(index);
 
     return (
         <>
-            {markers.length === 0 && isMessageVisible && (
-                <InfoMessage
-                    onClose={handleAlertClose}
-                    visible={isMessageVisible}
-                />
-            )}
+            <Alert
+                color="danger"
+                message="Click on the map to add marker!"
+                onClose={handleAlertClose}
+                visible={isAlertVisible}
+            />
             {markers.length !== 0 && (
                 <>
                     <InfoTable

@@ -1,5 +1,5 @@
-import React, {createRef, useEffect} from "react";
-import { Container } from "reactstrap";
+import React, {createRef, useEffect} from 'react';
+import { Container } from 'reactstrap';
 
 const Jumbotron = () => {
     let pageHeader = createRef();
@@ -9,11 +9,11 @@ const Jumbotron = () => {
             const updateScroll = () => {
                 let windowScrollTop = window.pageYOffset / 3;
                 pageHeader.current.style.transform =
-                    "translate3d(0," + windowScrollTop + "px,0)";
+                    'translate3d(0,' + windowScrollTop + 'px,0)';
             };
-            window.addEventListener("scroll", updateScroll);
+            window.addEventListener('scroll', updateScroll);
             return function cleanup() {
-                window.removeEventListener("scroll", updateScroll);
+                window.removeEventListener('scroll', updateScroll);
             };
         }
     });
@@ -23,7 +23,7 @@ const Jumbotron = () => {
                 <div
                     className="page-header-image"
                     style={{
-                        backgroundImage: "url(" + require("../assets/img/forest.jpg") + ")"
+                        backgroundImage: 'url(' + require('../assets/img/forest.jpg') + ')'
                     }}
                     ref={pageHeader}
                 ></div>
