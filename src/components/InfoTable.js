@@ -8,10 +8,10 @@ const InfoTable = () => {
     const { markers } = useMarkers();
 
     return (
-        <Table striped borderless responsive size="sm">
+        <Table hover responsive>
             <thead>
                 <tr>
-                    <th className="align-middle">Marker</th>
+                    <th className="align-middle">Marker ID</th>
                     <th className="align-middle">
                         Coordinates <small className="text-muted">(Lat / Long)</small>
                     </th>
@@ -19,13 +19,12 @@ const InfoTable = () => {
                 </tr>
             </thead>
             <tbody>
-                {markers.map(({ id, longitude, latitude }, index) => (
+                {markers.map(({ id, longitude, latitude }) => (
                     <InfoTableRow
                         key={id}
                         id={id}
                         longitude={longitude}
                         latitude={latitude}
-                        index={index}
                     />
                 ))}
             </tbody>

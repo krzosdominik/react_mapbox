@@ -1,5 +1,7 @@
 export const MAPBOX_TOKEN = 'pk.eyJ1Ijoia3J6b3Nkb21pbmlrIiwiYSI6ImNrOGtxdjMybzAzcmgzbW8xOWt2bzF4aHEifQ.RBMOKHxbivXQCXNTm--rHA';
 
+export const MAP_STYLE = 'mapbox://styles/krzosdominik/ck8kvp89m032h1inawuv4wqsn';
+
 const accordionButtonStyle = {
     width: '100%',
     position: 'relative'
