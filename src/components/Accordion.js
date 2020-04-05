@@ -3,6 +3,7 @@ import { Card, CardHeader, CardBody, Collapse, Button } from 'reactstrap';
 
 import { arrowStyle, accordionAttributes as attributes } from '../settings/constants';
 import Map from './Map';
+import MarkersInfo from './MarkersInfo';
 
 const Accordion = () => {
     const [collapses, setCollapses] = useState([]);
@@ -47,12 +48,12 @@ const Accordion = () => {
                         >
                             <i className='now-ui-icons location_pin'></i>{' '}
                             Markers information
-                            <i className={toggleArrows("collapseOne")} style={arrowStyle}></i>
+                            <i className={toggleArrows("collapseTwo")} style={arrowStyle}></i>
                         </Button>
                     </CardHeader>
                     <Collapse isOpen={collapses.includes('collapseTwo')}>
                         <CardBody>
-
+                            <MarkersInfo />
                         </CardBody>
                     </Collapse>
 
