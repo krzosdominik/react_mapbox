@@ -4,18 +4,16 @@ import formatcoords from "formatcoords";
 
 import { useMarkers } from '../context/Markers.context';
 
-const InfoTableRow = ({ id, longitude, latitude, index }) => {
-    const { markers, setMarkers } = useMarkers();
+const InfoTableRow = ({ id, longitude, latitude }) => {
+    const { handleDeleteClick } = useMarkers();
 
-    const onDeleteClick = ({ currentTarget }) => {
-        setMarkers(() => markers.filter(({ id }) => id !== currentTarget.id));
-    };
+    const onDeleteClick = id => handleDeleteClick(id);
 
     const coords = formatcoords(latitude, longitude);
 
     return (
         <tr>
-            <th className="align-middle" scope="row">{index + 1}</th>
+            <th className="align-middle" scope="row">{id}</th>
             <td className="align-middle">{coords.format()}</td>
             <td className="td-actions text-right align-middle">
                 <Button
@@ -23,8 +21,7 @@ const InfoTableRow = ({ id, longitude, latitude, index }) => {
                     color="danger"
                     size="sm"
                     aria-label="Delete"
-                    onClick={onDeleteClick}
-                    id={id}
+                    onClick={onDeleteClick.bind(this, id)}
                 >
                     <span aria-hidden="true">
                         <i className="now-ui-icons ui-1_simple-remove"></i>

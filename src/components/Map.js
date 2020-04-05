@@ -1,41 +1,20 @@
 import React, { useState } from 'react';
 import ReactMapGL, { Marker } from "react-map-gl";
-import uniqid from "uniqid";
 
-import { MAPBOX_TOKEN } from '../settings/constants';
+import { MAPBOX_TOKEN, MAP_STYLE } from '../settings/constants';
 import { useMarkers } from '../context/Markers.context';
 
 const Map = () => {
-    const { markers, setMarkers } = useMarkers();
+    const { markers, handleMapClick, handleMarkerDragEnd } = useMarkers();
     const [viewport, setViewport] = useState({
         latitude: 52.237049,
         longitude: 21.017532,
         zoom: 10
     });
 
-    const onMapClick = ({ lngLat }) => {
-        const [longitude, latitude] = lngLat;
-        const marker = {
-            id: uniqid(),
-            longitude,
-            latitude
-        }
-        setMarkers(markers => [...markers, marker])
-    };
+    const onMapClick = ({ lngLat }) => handleMapClick(lngLat);
 
-    const onMarkerDragEnd = ({ target, lngLat }) => {
-        const [longitude, latitude] = lngLat;
-        setMarkers(() => markers.map(marker => {
-            if (marker.id === target.id) {
-                return {
-                    id: target.id,
-                    longitude,
-                    latitude
-                }
-            }
-            return marker;
-        })); 
-    };
+    const onMarkerDragEnd = ({ lngLat }, id) => handleMarkerDragEnd(lngLat, id);
 
     return (
         <ReactMapGL
@@ -43,7 +22,7 @@ const Map = () => {
             width='100%'
             height='70vh'
             mapboxApiAccessToken={MAPBOX_TOKEN}
-            mapStyle='mapbox://styles/krzosdominik/ck8kvp89m032h1inawuv4wqsn'
+            mapStyle={MAP_STYLE}
             onViewportChange={viewport => setViewport(viewport)}
             onClick={onMapClick}
         >
@@ -53,10 +32,10 @@ const Map = () => {
                     longitude={longitude}
                     latitude={latitude}
                     draggable
-                    onDragEnd={onMarkerDragEnd}
+                    onDragEnd={event => onMarkerDragEnd(event, id)}
                 >
-                    <span className="h3 text-danger text-bold">
-                        <i id={id} className="now-ui-icons location_pin"></i>
+                    <span className="h3 text-danger">
+                        <i className="now-ui-icons location_pin"></i>
                     </span>
                 </Marker>
             ))}
