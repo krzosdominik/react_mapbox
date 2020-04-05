@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { NavbarBrand, Navbar, Container, Nav, NavItem, NavLink } from "reactstrap";
+import { Link } from 'react-router-dom';
+import { Navbar, Container, Nav, NavItem, NavLink } from "reactstrap";
 
 const Header = () => {
     const [navbarColor, setNavbarColor] = useState("navbar-transparent");
@@ -23,12 +24,9 @@ const Header = () => {
         <Navbar className={"fixed-top " + navbarColor} expand="lg" color="info">
             <Container>
                 <div className="navbar-translate">
-                    <NavbarBrand
-                        href="#"
-                        id="navbar-brand"
-                    >
+                    <Link to="/" className="navbar-brand">
                         React Mapbox
-                        </NavbarBrand>
+                    </Link>
                 </div>
                 <Nav navbar>
                     <NavItem>
