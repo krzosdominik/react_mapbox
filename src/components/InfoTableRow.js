@@ -8,7 +8,7 @@ const InfoTableRow = ({ id, longitude, latitude, index }) => {
     const { markers, setMarkers } = useMarkers();
 
     const onDeleteClick = ({ currentTarget }) => {
-        setMarkers( () => markers.filter(({ id }) => id !== currentTarget.id));
+        setMarkers(() => markers.filter(({ id }) => id !== currentTarget.id));
     };
 
     const coords = formatcoords(latitude, longitude);
