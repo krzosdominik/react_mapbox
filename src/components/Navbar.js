@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavbarBrand, Navbar, Container } from "reactstrap";
+import { NavbarBrand, Navbar, Container, Nav, NavItem, NavLink } from "reactstrap";
 
 const Header = () => {
     const [navbarColor, setNavbarColor] = useState("navbar-transparent");
@@ -20,21 +20,34 @@ const Header = () => {
         };
     });
     return (
-        <>
-            <Navbar className={"fixed-top " + navbarColor} expand="lg" color="info">
-                <Container>
-                    <div className="navbar-translate">
-                        <NavbarBrand
-                            href="/"
-                            target="_blank"
-                            id="navbar-brand"
-                        >
-                            React Mapbox
+        <Navbar className={"fixed-top " + navbarColor} expand="lg" color="info">
+            <Container>
+                <div className="navbar-translate">
+                    <NavbarBrand
+                        href="#"
+                        id="navbar-brand"
+                    >
+                        React Mapbox
                         </NavbarBrand>
-                    </div>
-                </Container>
-            </Navbar>
-        </>
+                </div>
+                <Nav navbar>
+                    <NavItem>
+                        <NavLink
+                            href="#pablo"
+                            onClick={e => {
+                                e.preventDefault();
+                                document
+                                    .getElementById("main")
+                                    .scrollIntoView({ behavior: "smooth" });
+                            }}
+                        >
+                            <i className="now-ui-icons location_map-big"></i>
+                            <p>Start</p>
+                        </NavLink>
+                    </NavItem>
+                </Nav>
+            </Container>
+        </Navbar>
     );
 }
 
