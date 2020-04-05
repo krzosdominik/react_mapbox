@@ -23,6 +23,20 @@ const Map = () => {
         setMarkers(markers => [...markers, marker])
     };
 
+    const onMarkerDragEnd = ({ target, lngLat }) => {
+        const [longitude, latitude] = lngLat;
+        setMarkers(() => markers.map(marker => {
+            if (marker.id === target.id) {
+                return {
+                    id: target.id,
+                    longitude,
+                    latitude
+                }
+            }
+            return marker;
+        })); 
+    };
+
     return (
         <ReactMapGL
             {...viewport}
@@ -38,6 +52,8 @@ const Map = () => {
                     key={id}
                     longitude={longitude}
                     latitude={latitude}
+                    draggable
+                    onDragEnd={onMarkerDragEnd}
                 >
                     <span className="h3 text-danger text-bold">
                         <i id={id} className="now-ui-icons location_pin"></i>
