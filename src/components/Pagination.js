@@ -10,7 +10,10 @@ const TablePagination = ({ onClick, currentPage, pagesCount }) => {
 
     return (
         <div className="pagination-wrapper">
-            <Pagination aria-label="Table pagination">   
+            <Pagination
+                className="pagination justify-content-center"
+                aria-label="Table pagination"
+            >
                 <PaginationItem disabled={currentPage <= 0}>
                     <PaginationLink
                         onClick={e => onPaginationClick(e, currentPage - 1)}
