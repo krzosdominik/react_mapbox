@@ -4,29 +4,30 @@ import { Table } from 'reactstrap';
 import { useMarkers } from '../context/Markers.context';
 import InfoTableRow from './InfoTableRow';
 
-const InfoTable = () => {
+const InfoTable = ({ currentPage, pageSize }) => {
     const { markers } = useMarkers();
 
     return (
-        <Table hover responsive>
+        <Table striped responsive size="sm">
             <thead>
                 <tr>
                     <th className="align-middle">Marker ID</th>
-                    <th className="align-middle">
-                        Coordinates <small className="text-muted">(Lat / Long)</small>
-                    </th>
+                    <th className="align-middle">Coordinates</th>
                     <th className="align-middle text-right">Action</th>
                 </tr>
             </thead>
             <tbody>
-                {markers.map(({ id, longitude, latitude }) => (
-                    <InfoTableRow
-                        key={id}
-                        id={id}
-                        longitude={longitude}
-                        latitude={latitude}
-                    />
-                ))}
+                {markers
+                    .slice(currentPage * pageSize, (currentPage + 1) * pageSize)
+                    .map(({ id, longitude, latitude }, index) => (
+                        <InfoTableRow
+                            key={id}
+                            id={id}
+                            longitude={longitude}
+                            latitude={latitude}
+                            index={index}
+                        />
+                    ))}
             </tbody>
         </Table>
     )

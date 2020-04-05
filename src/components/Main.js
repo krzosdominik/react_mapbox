@@ -6,7 +6,7 @@ import { MarkersProvider } from "../context/Markers.context";
 
 const Main = () => {
     return (
-        <section className='section content-center' style={{ minHeight: '100vh' }}>
+        <section className='section content-center' style={{ minHeight: '50vh' }}>
             <Container>
                 <h2 className='text-center'>
                     Test app and <strong className="text-info">have fun!</strong>

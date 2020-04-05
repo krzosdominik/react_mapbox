@@ -17,15 +17,14 @@ const InfoTableRow = ({ id, longitude, latitude }) => {
             <td className="align-middle">{coords.format()}</td>
             <td className="td-actions text-right align-middle">
                 <Button
+                    className=""
                     type="button"
                     color="danger"
                     size="sm"
                     aria-label="Delete"
                     onClick={onDeleteClick.bind(this, id)}
                 >
-                    <span aria-hidden="true">
-                        <i className="now-ui-icons ui-1_simple-remove"></i>
-                    </span>
+                    <span aria-hidden="true">Delete</span>
                 </Button>
             </td>
         </tr>
